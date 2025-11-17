@@ -31,12 +31,12 @@ public class PersonaController {
         }
     }
 
-    @GetMapping("/{identificationNumber}")
+    @GetMapping("/{numeroIdentificacion}")
     public ResponseEntity<?> obtenerPorIdentificacion(
-            @PathVariable String identificationNumber,
+            @PathVariable String numeroIdentificacion,
             HttpServletRequest req) {
 
-        return service.buscarPorNumeroIdentificacion(identificationNumber)
+        return service.buscarPorNumeroIdentificacion(numeroIdentificacion)
                 .<ResponseEntity<?>>map(persona -> ResponseEntity.ok(persona))
                 .orElseGet(() -> {
                     ApiError error = new ApiError(
